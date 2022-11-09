@@ -1,0 +1,3 @@
+Downloaded the finetuned model 2.66 GB (1 GB compressed)
+Downloaded the So2Sat dataset (the link in paper -> tenserflow site -> link in tenserflow site) 3.7 GB only validation because train is 51 GB
+Converted into the format using helper

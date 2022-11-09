@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-# import wandb
+import wandb
 from sklearn.metrics import accuracy_score, average_precision_score
 from sklearn.preprocessing import StandardScaler
 
@@ -61,13 +61,13 @@ def test(epoch, model, criterion, test_loader, device, task_type):
         metric = average_precision_score(ground_truth, predictions, average='macro')
 
     print(metric)
-    # wandb.log({'test_loss': epoch_bce, 'metric': metric}, step = epoch)
+    wandb.log({'test_loss': epoch_bce, 'metric': metric}, step = epoch)
     return metric
 
 
 args = parse_option()
 
-# wandb.init(config=args, project=args.wandb_project)
+wandb.init(config=args, project=args.wandb_project)
 
 scaler = StandardScaler()
 
@@ -110,7 +110,7 @@ print(device)
 
 model.to(device)
 
-# wandb.watch(model)
+wandb.watch(model)
 
 if not args.evaluate:
     for epoch in range(args.epochs):
