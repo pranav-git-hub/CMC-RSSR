@@ -1,3 +1,5 @@
+print("OK Pranav")
+
 import numpy as np
 import torch
 import torch.nn as nn
@@ -31,7 +33,6 @@ def train(epoch, model, criterion, optimizer, train_loader, device, scheduler):
 
 
 def test(epoch, model, criterion, test_loader, device, task_type):
-    global metric
     model.eval()
     epoch_bce = 0
     predictions = []
@@ -123,17 +124,3 @@ else:
     model = torch.load(args.resume)
     val_metric = test(0, model, criterion, val_loader, device, task_type)
     print(val_metric)
-
-# args.resume
-# args.evaluate
-
-# python linear_classifier.py --train_data_path PATH_TO_TRAIN_FEATURES
-# --val_data_path PATH_TO_VAL_FEATURES
-# --batch_size BATCH_SIZE
-# --epochs NUM_OF_EPOCHS
-# --learning_rate LEARNING_RATE
-# --lr_decay_epochs DECAY_EPOCHS
-# --lr_decay_rate DECAY_RATE
-# --weight_decay WEIGHT_DECAY 
-# --resume PATH_TO_MODEL_SAVE_OR_RESUME
-# [--evaluate]
